@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="59px" height="59px" viewBox="0 0 59 59" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Pill</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M34.929,3.965 C24.607,14.286 14.285,24.608 3.963,34.93 C-1.321,40.214 -1.321,48.783 3.963,54.068 C9.248,59.352 17.816,59.352 23.101,54.068 L54.067,23.102 C59.352,17.816 59.352,9.249 54.067,3.965 C51.425,1.322 47.962,0 44.498,0 C41.035,0 37.572,1.322 34.929,3.965" id="Pill" fill="#D8D8D8"></path>
+    </g>
+</svg>

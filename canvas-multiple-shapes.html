@@ -1,0 +1,112 @@
+<!--Testing without the use of webgl-->
+<!DOCTYPE html>
+<html>
+
+<script src="js/svg.js"></script>
+
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #FF9A8B;
+    background-image: linear-gradient(90deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);
+  }
+
+  #pill {
+    animation: ShiftUp 2s infinite;
+ }
+
+  @keyframes change {
+    to {
+      fill: #f06d06;
+      opacity: 0;
+    }
+  }
+
+
+
+  /* @keyframes ShiftUp {
+    0% {
+     transform:  translateY(0px);
+    }
+
+    100% {
+      transform:  translateY(-400px);
+    }
+  } */
+
+
+
+  /* #canvas {
+
+  } */
+
+  </style>
+
+  <body>
+    <!-- <canvas id="canvas"  width="500" height="500"> -->
+
+      <!-- <svg width="109" height="109" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+      <image xlink:href="assets/Pill.svg" x="0" y="40" height="59px" width="59px" />
+    </svg> -->
+
+    <!-- <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> -->
+    <svg id="pill-svg" width="400" height="100%" viewBox= "-100 -100 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <title>Pill</title>
+        <desc>Created with Sketch.</desc>
+        <defs></defs>
+        <g id="pill"  stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <path d="M34.929,3.965 C24.607,14.286 14.285,24.608 3.963,34.93 C-1.321,40.214 -1.321,48.783 3.963,54.068 C9.248,59.352 17.816,59.352 23.101,54.068 L54.067,23.102 C59.352,17.816 59.352,9.249 54.067,3.965 C51.425,1.322 47.962,0 44.498,0 C41.035,0 37.572,1.322 34.929,3.965" id="Pill" fill="#D8D8D8">
+              <!-- <animateTransform attributeName="transform"
+               type="translate"
+               from="100 700"
+               to="100 -60"
+               begin="0s"
+               dur="3s"
+               repeatCount="indefinite"/> -->
+            </path>
+        </g>
+    </svg>
+
+<!-- </canvas> -->
+
+
+ <script>
+
+ var pill = document.getElementById('pill')
+
+ var pillsvg = document.getElementById('pill-svg');
+
+ var pillWidth = pillsvg.getAttribute('width');
+
+ //
+ // pill.animate().rotate(45).skew(25, 0)
+ //
+ // console.log(pill);
+
+//declaring variables for multiple svgs
+ var opacity = Math.random();
+
+ var x = -(Math.random() * pillWidth); //x-coordinate for svg
+
+ //changes Attributes of every svg on page reload
+ function changeAttributes() {
+    var pillViewBox =pillsvg.setAttribute('viewBox', x + ' -100 400 400');
+}
+
+changeAttributes();
+
+ console.log();
+
+
+
+ </script>
+
+</html>

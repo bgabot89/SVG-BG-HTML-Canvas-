@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="41px" height="41px" viewBox="0 0 41 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Circle</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M5.946,5.945 C-1.982,13.873 -1.982,26.725 5.946,34.653 C13.873,42.581 26.726,42.581 34.654,34.653 C42.581,26.725 42.581,13.873 34.654,5.945 C30.69,1.981 25.494,0 20.299,0 C15.104,0 9.909,1.981 5.946,5.945" id="Circle" fill="#D8D8D8"></path>
+    </g>
+</svg>
