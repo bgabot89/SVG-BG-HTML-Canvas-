@@ -23,6 +23,16 @@
     z-index: 1;
  }
 
+ #pill-svg {
+   position: absolute;
+   /* margin: 0 0 0 0; */
+ }
+
+ #circle-svg {
+   position: absolute;
+   /* margin: 0 0 0 0; */
+ }
+
  #circle {
     z-index: 2;
  }
@@ -34,33 +44,10 @@
     }
   }
 
-  /* @keyframes ShiftUp {
-    0% {
-     transform:  translateY(0px);
-    }
-
-    100% {
-      transform:  translateY(-600px);
-    }
-  } */
-
-
-
-  /* #canvas {
-
-  } */
-
   </style>
 
   <body id="body">
-    <!-- <canvas id="canvas"  width="500" height="500"> -->
 
-      <!-- <svg width="109" height="109" xmlns="http://www.w3.org/2000/svg"
-     xmlns:xlink="http://www.w3.org/1999/xlink">
-      <image xlink:href="assets/Pill.svg" x="0" y="40" height="59px" width="59px" />
-    </svg> -->
-
-    <!-- <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> -->
     <svg id="pill-svg" width="100%" height="100%" viewBox= "-100 -100 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <title>Pill</title>
         <desc>Created with Sketch.</desc>
@@ -75,18 +62,22 @@
                dur="3s"
                repeatCount="indefinite"/> -->
 
-               <animateTransform attributeName="transform"
+               <!-- <animateTransform attributeName="transform"
                 type="translate"
                 to="0 -1000"
                 begin="0s"
-                dur="40s"
-                repeatCount="indefinite"/>
+                dur="30s"
+                repeatCount="indefinite"/> -->
+
             </path>
         </g>
 
-        <!-- <g id="circle" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <path d="M5.946,5.945 C-1.982,13.873 -1.982,26.725 5.946,34.653 C13.873,42.581 26.726,42.581 34.654,34.653 C42.581,26.725 42.581,13.873 34.654,5.945 C30.69,1.981 25.494,0 20.299,0 C15.104,0 9.909,1.981 5.946,5.945" id="Circle" fill="#D8D8D8"></path>
-        </g> -->
+    </svg>
+
+    <svg id="circle-svg" width="100%" height="100%" viewBox= "-100 -100 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <g id="circle" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <path d="M5.946,5.945 C-1.982,13.873 -1.982,26.725 5.946,34.653 C13.873,42.581 26.726,42.581 34.654,34.653 C42.581,26.725 42.581,13.873 34.654,5.945 C30.69,1.981 25.494,0 20.299,0 C15.104,0 9.909,1.981 5.946,5.945" id="Circle" fill="#D8D8D8"></path>
+      </g>
 
     </svg>
 
@@ -97,21 +88,25 @@
 
  <script>
 
- var pill = document.getElementById('pill')
+ var pill = document.getElementById('pill');
 
  var pillsvg = document.getElementById('pill-svg');
 
  var pillWidth = pillsvg.getAttribute('width');
 
+ var circleWidth = pillsvg.getAttribute('width');
+
  var pillHeight = pillsvg.getAttribute('height');
 
+ var circle = document.getElementById('circle'); //DRY CODE; PLEASE MAKE MORE EFFICIENT
+
+ var circlesvg = document.getElementById('circle-svg'); //DRY CODE; PLEASE MAKE MORE EFFICIENT
+
+ var circleWidth = circlesvg.getAttribute('width'); //DRY CODE; PLEASE MAKE MORE EFFICIENT
+
+ var circleHeight = circlesvg.getAttribute('height'); //DRY CODE; PLEASE MAKE MORE EFFICIENT
+
  var windowWidth = window.innerWidth;
-
-
- //
- // pill.animate().rotate(45).skew(25, 0)
- //
- // console.log(pill);
 
 //declaring variables for multiple svgs
  var opacity = Math.random();
@@ -124,6 +119,14 @@
  var x = -(Math.random() * windowWidth); //x-coordinate for svg
 
  var y = -(Math.random() * windowWidth); //x-coordinate for svg
+
+ //DRY CODE; PLEASE MAKE MORE EFFICIENT
+ var circleArr = [];
+
+ var cirX = -(Math.random() * windowWidth);
+ var cirY = -(Math.random() * windowWidth);
+
+ ///////////
 
  var size = 1 + getRandom(0.1, 0.5);
 
@@ -138,7 +141,11 @@
  emptyArr.push(x);
  emptyArr.push(y);
 
- console.log(emptyArr);
+ // console.log(emptyArr);
+
+ //DRY CODE; PLEASE MAKE MORE EFFICIENT
+ circleArr.push(cirX);
+ circleArr.push(cirY);
 
  changeAttributes();
 
@@ -216,6 +223,49 @@
       }
    }
 
+
+   //DRY CODE; PLEASE DELETE LATER
+   changeCoordinatesCircle();
+
+   function changeCoordinatesCircle() {
+     // if x coordinates is above the threshold, then set it to a range in which the svg can appear
+     //grab absolutevalue of y coordinate and compare to threshold
+     if ((Math.abs(cirY) > yThreshold) && (Math.abs(cirX) > yThreshold)) {
+       console.log('above newX and y threshold, changing value to -390');
+       newX = -390;
+       circleArr.splice(0, 1, newX); //splice to prevent mutation of value of xcoordinate
+       newY = -390;
+       circleArr.splice(1, 1, newY); //splice to prevent mutation of value of xcoordinate
+       var circle = circlesvg.setAttribute('viewBox', newX + ' ' + newY + ' ' + '400 400');
+       AnimationUpdate();
+     }
+
+     else if (Math.abs(cirX) > yThreshold) {
+       console.log('above cirX threshold, changing value to -390');
+       newX = -390;
+       circleArr.splice(0, 1, newX); //splice to prevent mutation of value of xcoordinate
+       circleArr.splice(1, 1, y); //splice to prevent mutation of value of ucoordinate
+       var circle = circlesvg.setAttribute('viewBox', newX + ' ' + circleArr[1] + ' ' + '400 400');
+       AnimationUpdate();
+     }
+
+     else if (Math.abs(cirY) > yThreshold) {
+       console.log('above cirY threshold, changing value to -390');
+       newY = -390;
+       circleArr.splice(1, 1, newY); //splice to prevent mutation of value of ucoordinate
+       var circle = circlesvg.setAttribute('viewBox', circleArr[0] + ' ' + newY + ' ' + '400 400');
+       AnimationUpdate();
+     }
+
+     else {
+       console.log('in thresholds');
+       var circle = circlesvg.setAttribute('viewBox', cirX + ' ' + cirY + ' ' +'400 400');
+       circleArr.splice(1, 1, cirY); //splice to prevent mutation of value of ucoordinate
+       AnimationUpdate();
+     }
+  }
+
+
   //updates the animation for the svg so it rises to the top and resets back to it's initial position
   function AnimationUpdate() {
     var pillNew = pillsvg.getAttribute('viewBox');
@@ -223,20 +273,13 @@
     var newY = emptyArr[1];
 
     console.log(newY);
+
     if (newY < 100) {
-      // newY += 1;
       newY += 10;
       console.log(newY);
-      // console.log('updating' + (newY + 10));
       pillX = pillsvg.setAttribute('viewBox', emptyArr[0] + ' ' + newY + ' ' +'400 400');
     }
-
-    // console.log(pillNew);
   }
-
-
- console.log();
-
 
 
  </script>
